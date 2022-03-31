@@ -31,8 +31,11 @@
 .pub/
 /build/
 
-
-web/
+*.cpp
+*.h
+*.c
+*.txt
+*.cmake
 windows/
 
 # Web related
