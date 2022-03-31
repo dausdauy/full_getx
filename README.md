@@ -12,7 +12,10 @@ Di saat itu bingung mau belajar buat apa, terus gw liat temen lagi maen Instagra
 ## API Reference.
 - disini gw make [randomuser.me](https://randomuser.me).
 
-## Screenshoot aplikasinya
+<h2 align="center">
+  Screenshoot
+</h2>
+
 <p align="center">
 <img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/1.gif" width="250"/>
 <img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/2.gif" width="250"/>
@@ -21,4 +24,6 @@ Di saat itu bingung mau belajar buat apa, terus gw liat temen lagi maen Instagra
 <img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/5.gif" width="250"/>
 </p>
 
-### Thank you.
+<h3 align="center">
+  Thank you 🙂
+</h2>
