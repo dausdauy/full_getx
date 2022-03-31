@@ -1,6 +1,6 @@
-# Isee.
+<h1 align="center"> Isee. </h1>
 
-Di saat itu bingung mau belajar buat apa, terus gw liat temen lagi maen Instagram. akhirnya gw mau nyoba bikin designnya.
+<h5 align="center"> Di saat itu bingung mau belajar buat apa, terus gw liat temen lagi maen Instagram. akhirnya gw mau nyoba bikin designnya. </h5>
 
 ## Dependencies.
 - [getX](https://pub.dev/packages/get) untuk state managementnya (lazyload, Bindings, GetConnect & StateMixin).
@@ -11,6 +11,8 @@ Di saat itu bingung mau belajar buat apa, terus gw liat temen lagi maen Instagra
 
 ## API Reference.
 - disini gw make [randomuser.me](https://randomuser.me).
+
+###### # Note : yang mau kontribute silahkan dengan senang hati, bisa di improvisasi sekalian belajar2 hehe.
 
 <h2 align="center">
   Screenshoot
@@ -26,4 +28,4 @@ Di saat itu bingung mau belajar buat apa, terus gw liat temen lagi maen Instagra
 
 <h3 align="center">
   Thank you 🙂
-</h2>
+</h3>
