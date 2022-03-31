@@ -13,12 +13,12 @@ Di saat itu bingung mau belajar buat apa, terus gw liat temen lagi maen Instagra
 - disini gw make [randomuser.me](https://randomuser.me).
 
 ## Screenshoot aplikasinya
-<p>
-<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/1.gif" width="300"/>
-<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/2.gif" width="300"/>
-<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/3.gif" width="300"/>
-<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/4.gif" width="300"/>
-<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/5.gif" width="300"/>
+<p align="center">
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/1.gif" width="250"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/2.gif" width="250"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/3.gif" width="250"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/4.gif" width="250"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/5.gif" width="250"/>
 </p>
 
 ### Thank you.
