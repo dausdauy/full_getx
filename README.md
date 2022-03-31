@@ -1,16 +1,24 @@
-# full_getx
+# Isee.
 
-A new Flutter project.
+Di saat itu bingung mau belajar buat apa, terus gw liat temen lagi maen Instagram. akhirnya gw mau nyoba bikin designnya.
 
-## Getting Started
+## Dependencies.
+- [getX](https://pub.dev/packages/get) untuk state managementnya (lazyload, Bindings, GetConnect & StateMixin).
+- [cached_network_image](https://pub.dev/packages/cached_network_image) untuk cache imagenya.
+- [fluttertoast](https://pub.dev/packages/fluttertoast) untuk informasi.
+- [carousel_slider](https://pub.dev/packages/carousel_slider) untuk slide gambar dipostingan.
+- [avatar_glow](https://pub.dev/packages/avatar_glow) untuk nampilin efek saat `double tap`.
 
-This project is a starting point for a Flutter application.
+## API Reference.
+- disini gw make [randomuser.me](https://randomuser.me).
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshoot aplikasinya
+<p>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/1.gif" width="300"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/2.gif" width="300"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/3.gif" width="300"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/4.gif" width="300"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/5.gif" width="300"/>
+</p>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Thank you.
