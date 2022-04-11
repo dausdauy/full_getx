@@ -37,7 +37,6 @@ class Profile extends GetView {
                             ),
                           ),
                         ),
-                        Text(c.auth.currentUser!.uid),
                         Text(c.auth.currentUser!.displayName ?? 'No Name'),
                         Text(c.auth.currentUser!.email ?? ''),
                       ],
