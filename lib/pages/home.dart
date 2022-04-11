@@ -20,10 +20,10 @@ class Home extends GetView<HomeController> {
     return SafeArea(
       child: RefreshIndicator(
         onRefresh: () => controller.getUsers(),
-        child: SingleChildScrollView(
-          controller: controller.scrollController,
-          child: controller.obx(
-            (data) => Column(
+        child: controller.obx(
+          (data) => SingleChildScrollView(
+            controller: controller.scrollController,
+            child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 widgetHeader(),
@@ -31,48 +31,48 @@ class Home extends GetView<HomeController> {
                 widgetPosting(data),
               ],
             ),
-            onError: (error) => Obx(
-              () => Padding(
-                padding: const EdgeInsets.fromLTRB(10.0, 50.0, 10.0, 0.0),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/nointernet.jpg',
-                      fit: BoxFit.fitWidth,
+          ),
+          onError: (error) => Obx(
+            () => Padding(
+              padding: const EdgeInsets.fromLTRB(10.0, 50.0, 10.0, 0.0),
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/nointernet.jpg',
+                    fit: BoxFit.fitWidth,
+                  ),
+                  Text(
+                    controller.isLoading.isFalse
+                        ? 'Pastikan anda terkoneksi dengan internet'
+                        : 'Menghubungkan Kembali',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
                     ),
-                    Text(
-                      controller.isLoading.isFalse
-                          ? 'Pastikan anda terkoneksi dengan internet'
-                          : 'Menghubungkan Kembali',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    if (controller.isLoading.isFalse)
-                      OutlinedButton.icon(
-                        style: OutlinedButton.styleFrom(
-                          shape: const StadiumBorder(),
-                          side: const BorderSide(
-                            width: 1,
-                            color: Colors.blue,
-                          ),
+                  ),
+                  const SizedBox(height: 20),
+                  if (controller.isLoading.isFalse)
+                    OutlinedButton.icon(
+                      style: OutlinedButton.styleFrom(
+                        shape: const StadiumBorder(),
+                        side: const BorderSide(
+                          width: 1,
+                          color: Colors.blue,
                         ),
-                        onPressed: () {
-                          controller.isLoading(true);
-                          controller
-                              .getUsers()
-                              .whenComplete(() => controller.isLoading(false));
-                        },
-                        label: const Text('Coba Lagi'),
-                        icon: const Icon(Icons.wifi_protected_setup_sharp),
                       ),
-                    if (controller.isLoading.isTrue)
-                      const CircularProgressIndicator()
-                  ],
-                ),
+                      onPressed: () {
+                        controller.isLoading(true);
+                        controller
+                            .getUsers()
+                            .whenComplete(() => controller.isLoading(false));
+                      },
+                      label: const Text('Coba Lagi'),
+                      icon: const Icon(Icons.wifi_protected_setup_sharp),
+                    ),
+                  if (controller.isLoading.isTrue)
+                    const CircularProgressIndicator()
+                ],
               ),
             ),
           ),

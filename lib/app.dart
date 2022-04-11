@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:full_getx/pages/home.dart';
+import 'package:full_getx/pages/profile.dart';
 import 'package:full_getx/services/controller/home_controller.dart';
 import 'package:get/get.dart';
 
@@ -61,6 +62,6 @@ class App extends GetView<HomeController> {
         Container(color: Colors.green),
         Container(color: Colors.blue),
         Container(color: Colors.red),
-        Container(color: Colors.indigo),
+        Profile(),
       ];
 }
