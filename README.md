@@ -19,11 +19,15 @@
 </h2>
 
 <p align="center">
-<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/1.gif" width="250"/>
-<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/2.gif" width="250"/>
-<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/3.gif" width="250"/>
-<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/4.gif" width="250"/>
-<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/5.gif" width="250"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/1.gif" width="225"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/2.gif" width="225"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/3.gif" width="225"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/4.gif" width="225"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/5.gif" width="225"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/6.gif" width="225"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/7.gif" width="225"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/8.gif" width="225"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/9.gif" width="225"/>
 </p>
 
 <h3 align="center">
