@@ -1,4 +1,3 @@
-import 'dart:io' show Platform;
 
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -119,11 +118,9 @@ initNotification() async {
 
   AwesomeNotifications().actionStream.listen(
     (notification) {
-      if (Platform.isAndroid) {
         AwesomeNotifications().getGlobalBadgeCounter().then(
             (value) => AwesomeNotifications().setGlobalBadgeCounter(value - 1));
-      }
-      Get.to(() => ViewNotifikasi(message: notification));
+        Get.to(() => ViewNotifikasi(message: notification));
     },
   );
 
