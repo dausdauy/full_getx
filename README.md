@@ -8,6 +8,10 @@
 - [fluttertoast](https://pub.dev/packages/fluttertoast) untuk informasi.
 - [carousel_slider](https://pub.dev/packages/carousel_slider) untuk slide gambar dipostingan.
 - [avatar_glow](https://pub.dev/packages/avatar_glow) untuk nampilin efek saat `double tap`.
+- [awesome_notification](https://pub.dev/packages/awesome_notifications) local notifikasi.
+- [firebase_auth](https://pub.dev/packages/firebase_auth) untuk otentikasi login.
+- [firebase_messaging](https://pub.dev/packages/firebase_messaging) untuk ngirim pesan ke client.
+- [google_sign_in](https://pub.dev/packages/google_sign_in) untuk login dengan Google.
 
 ## API Reference.
 - disini gw make [randomuser.me](https://randomuser.me).
