@@ -28,6 +28,8 @@
 <img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/7.gif" width="225"/>
 <img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/8.gif" width="225"/>
 <img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/9.gif" width="225"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/fcm1.png" width="300"/>
+<img src="https://github.com/dausdauy/full_getx/blob/master/assets/ss/fcm2.png" width="300"/>
 </p>
 
 <h3 align="center">
