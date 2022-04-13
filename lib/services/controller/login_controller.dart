@@ -20,15 +20,11 @@ class LoginController extends GetxController {
   Future<void> signIn(String email, String password) async {
     await 1.delay();
     try {
-      UserCredential result = await auth.signInWithEmailAndPassword(
+      await auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      if (result.user != null) {
-        GetStorage().write('name', result.user!.displayName ?? '');
-        GetStorage().write('email', result.user!.email ?? '');
-        GetStorage().write('photo', result.user!.photoURL ?? '');
-      }
+      setupToken();
       Get.offNamed('/app');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {
@@ -40,6 +36,7 @@ class LoginController extends GetxController {
   }
 
   Future<void> signUp(email, password) async {
+    await 1.delay();
     try {
       UserCredential result = await auth.createUserWithEmailAndPassword(
         email: email,
@@ -86,12 +83,11 @@ class LoginController extends GetxController {
 
   Future<void> setupToken() async {
     // Get the token each time the application loads
-
     String? token = await FirebaseMessaging.instance.getToken();
+    // Save the initial token to the database
     await ref.doc(auth.currentUser!.uid).set({'tokens': token});
     debugPrint(token);
-    // Save the initial token to the database
-    await 3.delay();
+    await 1.delay();
     await saveTokenToDatabase(token!);
 
     // Any time the token refreshes, store this in the database too.
@@ -107,17 +103,18 @@ class LoginController extends GetxController {
   }
 
   @override
-  Future<void> onInit() async {
+  void onInit() async {
     super.onInit();
     await AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
       if (!isAllowed) {
-         Get.defaultDialog(
+        Get.defaultDialog(
           contentPadding: const EdgeInsets.all(20),
           middleText: 'Allow',
           textCancel: 'Cancel',
           textConfirm: 'Allow',
           onCancel: () => Get.back(),
-          onConfirm: () => AwesomeNotifications().requestPermissionToSendNotifications(),
+          onConfirm: () =>
+              AwesomeNotifications().requestPermissionToSendNotifications(),
         );
       }
     });
@@ -125,7 +122,7 @@ class LoginController extends GetxController {
 }
 
 class LoginProvider extends GetConnect {
-  String url = 'https://reqres.in/api/login?delay=1';
+  String url = 'https://reqres.in/api/login';
 
   Future<void> postLogin(String u, String p) async {
     Map<String, dynamic> body = {

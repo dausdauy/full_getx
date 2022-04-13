@@ -1,15 +1,15 @@
-import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:full_getx/pages/signup.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:full_getx/services/controller/login_controller.dart';
 import 'package:full_getx/services/function.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-class Login extends GetView {
-  Login({Key? key}) : super(key: key);
+class SignUp extends GetView {
+  SignUp({Key? key}) : super(key: key);
   final c = Get.put(LoginController());
   final cUser = TextEditingController();
   final cPass = TextEditingController();
+  final cConfirmPass = TextEditingController();
   final _keyForm = GlobalKey<FormState>();
 
   @override
@@ -25,7 +25,7 @@ class Login extends GetView {
                   child: Column(
                     children: [
                       image(),
-                      Text('Sign In',
+                      Text('Sign Up',
                           style: Theme.of(context).textTheme.titleLarge),
                       Container(
                         padding: const EdgeInsets.symmetric(
@@ -43,7 +43,7 @@ class Login extends GetView {
                                 validator: MyFunc.validatorUserEmail,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: const InputDecoration(
-                                  label: Text('Username / Email'),
+                                  label: Text('Email'),
                                   isDense: true,
                                   focusColor: Colors.black,
                                   errorStyle: TextStyle(fontSize: 11),
@@ -95,6 +95,47 @@ class Login extends GetView {
                                   ),
                                 ),
                               ),
+                              const SizedBox(height: 15),
+                              TextFormField(
+                                controller: cConfirmPass,
+                                style: Theme.of(context).textTheme.bodyMedium,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                textInputAction: TextInputAction.done,
+                                onEditingComplete: () => onLogin(context),
+                                validator: MyFunc.validatorPassword,
+                                obscureText: c.showPassword.value,
+                                keyboardType: TextInputType.emailAddress,
+                                decoration: InputDecoration(
+                                  label: const Text('Confirm Password'),
+                                  isDense: true,
+                                  focusColor: Colors.black,
+                                  errorStyle: const TextStyle(fontSize: 11),
+                                  border: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
+                                  ),
+                                  prefixIcon: const Icon(Icons.password),
+                                  suffixIcon: GetBuilder<LoginController>(
+                                    init: LoginController(),
+                                    initState: (_) {},
+                                    builder: (c) {
+                                      return InkWell(
+                                        onTap: () {
+                                          c.showPassword.value =
+                                              !c.showPassword.value;
+                                          c.update();
+                                        },
+                                        child: c.showPassword.isFalse
+                                            ? const Icon(
+                                                Icons.visibility_rounded)
+                                            : const Icon(
+                                                Icons.visibility_off_rounded),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
                               const SizedBox(height: 10),
                               ElevatedButton(
                                 onPressed: () => c.isLoading.isTrue
@@ -105,59 +146,7 @@ class Login extends GetView {
                                       ? Colors.grey
                                       : Colors.black,
                                 ),
-                                child: const Text('LOGIN'),
-                              ),
-                              const SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  const Expanded(
-                                    child: Divider(
-                                      color: Colors.black,
-                                      indent: 70,
-                                      endIndent: 10,
-                                      thickness: 0.2,
-                                    ),
-                                  ),
-                                  Text(
-                                    'OR',
-                                    style: Theme.of(context).textTheme.caption,
-                                  ),
-                                  const Expanded(
-                                    child: Divider(
-                                      color: Colors.black,
-                                      indent: 10,
-                                      endIndent: 70,
-                                      thickness: 0.2,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 5),
-                              SignInButton(
-                                Buttons.Google,
-                                onPressed: () => c
-                                    .signInWithGoogle()
-                                    .whenComplete(() => c.isLoading(false)),
-                              ),
-                              const SizedBox(height: 20),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('Don\'t have an account? ',
-                                      style:
-                                          Theme.of(context).textTheme.bodySmall,
-                                      textScaleFactor: 1.25),
-                                  InkWell(
-                                    onTap: () => Get.to(() => SignUp(),
-                                        transition: Transition.rightToLeft,
-                                        duration: const Duration(milliseconds: 500)
-                                        ),
-                                    child: Text('SignUp',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleSmall),
-                                  ),
-                                ],
+                                child: const Text('SUBMIT'),
                               ),
                             ],
                           ),
@@ -175,11 +164,17 @@ class Login extends GetView {
     );
   }
 
-  void onLogin(context) {
+  Future<void> onLogin(context) async {
     if (_keyForm.currentState!.validate()) {
       FocusScope.of(context).unfocus();
       c.isLoading(true);
-      c.signIn(cUser.text, cPass.text).whenComplete(() => c.isLoading(false));
+      if (cPass.text != cConfirmPass.text) {
+        await 1.delay();
+        Fluttertoast.showToast(msg: 'Kombinasi password tidak sesuai');
+        c.isLoading(false);
+      } else {
+        c.signUp(cUser.text, cPass.text).whenComplete(() => c.isLoading(false));
+      }
     }
   }
 

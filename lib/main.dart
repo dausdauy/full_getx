@@ -1,4 +1,3 @@
-
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -44,16 +43,23 @@ class MyApp extends GetView {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-      )),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+        ),
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+      ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
         ),
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        hoverColor: Colors.transparent,
       ),
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
@@ -117,9 +123,9 @@ initNotification() async {
 
   AwesomeNotifications().actionStream.listen(
     (notification) {
-        AwesomeNotifications().getGlobalBadgeCounter().then(
-            (value) => AwesomeNotifications().setGlobalBadgeCounter(value - 1));
-        Get.to(() => ViewNotifikasi(message: notification));
+      AwesomeNotifications().getGlobalBadgeCounter().then(
+          (value) => AwesomeNotifications().setGlobalBadgeCounter(value - 1));
+      Get.to(() => ViewNotifikasi(message: notification));
     },
   );
 

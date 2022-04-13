@@ -2,11 +2,32 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 GetStorage box = GetStorage();
 
 class MyFunc {
+  static String? validatorUserEmail(String? value) {
+    if (value!.contains('@')) {
+      return GetUtils.isEmail(value) ? null : 'Masukkan email dengan benar';
+    } else if (value.isEmpty) {
+      return 'Email tidak boleh kosong';
+    }
+    //  else if (!value.contains('@')) {
+    //   return 'Masukkan email dengan benar';
+    // }
+    // if (value.length < 4) return 'Username terlalu pendek';
+
+    return null;
+  }
+
+  static String? validatorPassword(String? value) {
+    if (value!.isEmpty) return 'Password tidak boleh kosong';
+    if (value.length < 4) return 'Password terlalu pendek';
+    return null;
+  }
+
   static toastErrorConnection() =>
       Fluttertoast.showToast(msg: 'Koneksi anda bermasalah');
 
