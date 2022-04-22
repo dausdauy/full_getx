@@ -1,7 +1,5 @@
 <h1 align="center"> Isee. </h1>
 
-<h5 align="center"> Di saat itu bingung mau belajar buat apa, terus gw liat temen lagi maen Instagram. akhirnya gw mau nyoba bikin designnya. </h5>
-
 ## Dependencies.
 - [getX](https://pub.dev/packages/get) untuk state managementnya (lazyload, Bindings, GetConnect & StateMixin).
 - [cached_network_image](https://pub.dev/packages/cached_network_image) untuk cache imagenya.
@@ -16,7 +14,7 @@
 ## API Reference.
 - disini gw make [randomuser.me](https://randomuser.me).
 
-###### # Note : yang mau kontribute silahkan dengan senang hati, bisa di improvisasi sekalian belajar2 hehe.
+###### # Note : yang mau kontribute silahkan dengan senang hati, bisa di improvisasi sekalian belajar2.
 
 <h2 align="center">
   Screenshoot
