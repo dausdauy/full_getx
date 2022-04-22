@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:full_getx/services/function.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginController extends GetxController {
@@ -58,16 +57,12 @@ class LoginController extends GetxController {
     isLoading(true);
     final req = await google.signIn();
     final googleAuth = await req!.authentication;
-    final authResult =
-        await auth.signInWithCredential(GoogleAuthProvider.credential(
+
+    await auth.signInWithCredential(GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     ));
-    if (authResult.user != null) {
-      GetStorage().write('name', authResult.user!.displayName.toString());
-      GetStorage().write('email', authResult.user!.email.toString());
-      GetStorage().write('photo', authResult.user!.photoURL.toString());
-    }
+
     setupToken();
     Get.offNamed('/app');
   }
