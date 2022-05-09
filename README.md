@@ -1,6 +1,6 @@
 <h1 align="center"> Isee. </h1>
 
-## Dependencies.
+## Packages Used.
 - [getX](https://pub.dev/packages/get) untuk state managementnya (lazyload, Bindings, GetConnect & StateMixin).
 - [cached_network_image](https://pub.dev/packages/cached_network_image) untuk cache imagenya.
 - [fluttertoast](https://pub.dev/packages/fluttertoast) untuk informasi.
