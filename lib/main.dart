@@ -33,6 +33,7 @@ void main() async {
   initNotification();
   FirebaseMessaging.onBackgroundMessage(fcmBackgroundHandler);
   runApp(MyApp());
+  // runApp(DevicePreview(builder: (context) => MyApp()));
 }
 
 class MyApp extends GetView {
@@ -42,6 +43,8 @@ class MyApp extends GetView {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      // useInheritedMediaQuery: true,
+      // builder: DevicePreview.appBuilder,
       theme: ThemeData(
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           selectedItemColor: Colors.black,
@@ -64,7 +67,8 @@ class MyApp extends GetView {
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      initialRoute: FirebaseAuth.instance.currentUser != null ? '/app' : '/login',
+      initialRoute:
+          FirebaseAuth.instance.currentUser != null ? '/app' : '/login',
       getPages: [
         GetPage(
           name: '/login',

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:full_getx/pages/home.dart';
 import 'package:full_getx/pages/profile.dart';
@@ -11,24 +13,20 @@ class App extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
+        extendBody: Platform.isIOS ? true : false,
         body: listPagesView[controller.selectedIndexView.value],
-        bottomNavigationBar: FractionallySizedBox(
-          heightFactor: .08,
-          child: Center(
-            child: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              iconSize: 20,
-              currentIndex: controller.selectedIndexView.value,
-              onTap: (i) {
-                controller.scroollToTop();
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          iconSize: 20,
+          currentIndex: controller.selectedIndexView.value,
+          onTap: (i) {
+            controller.scroollToTop();
 
-                controller.selectedIndexView(i);
-              },
-              items: listItemNavBar,
-            ),
-          ),
+            controller.selectedIndexView(i);
+          },
+          items: listItemNavBar,
         ),
       ),
     );
