@@ -488,8 +488,8 @@ class Home extends GetView<HomeController> {
               shape: BoxShape.circle,
               gradient: LinearGradient(
                 colors: [
-                  Color.fromARGB(255, 220, 124, 233),
-                  Color.fromARGB(255, 216, 231, 56),
+                  Colors.blue,
+                  Colors.red,
                 ],
                 tileMode: TileMode.repeated,
                 begin: Alignment.bottomRight,
