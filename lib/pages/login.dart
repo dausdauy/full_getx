@@ -150,12 +150,14 @@ class Login extends GetView {
                                   InkWell(
                                     onTap: () => Get.to(() => SignUp(),
                                         transition: Transition.rightToLeft,
-                                        duration: const Duration(milliseconds: 500)
-                                        ),
-                                    child: Text('SignUp',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleSmall),
+                                        duration:
+                                            const Duration(milliseconds: 500)),
+                                    child: Text(
+                                      'Sign Up',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall,
+                                    ),
                                   ),
                                 ],
                               ),

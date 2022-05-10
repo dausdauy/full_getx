@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:full_getx/services/controller/home_controller.dart';
@@ -18,63 +21,77 @@ class Home extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: RefreshIndicator(
-        onRefresh: () => controller.getUsers(),
-        child: controller.obx(
-          (data) => SingleChildScrollView(
-            controller: controller.scrollController,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                widgetHeader(),
-                widgetStories(context, data!),
-                widgetPosting(data),
+      top: Platform.isIOS ? false : true,
+      bottom: Platform.isIOS ? false : true,
+      child: Platform.isIOS
+          ? CustomScrollView(
+              slivers: [
+                CupertinoSliverRefreshControl(
+                  onRefresh: () => controller.getUsers(),
+                ),
+                buildDataObx(context),
               ],
+            )
+          : RefreshIndicator(
+              onRefresh: () => controller.getUsers(),
+              child: buildDataObx(context),
             ),
-          ),
-          onError: (error) => Obx(
-            () => Padding(
-              padding: const EdgeInsets.fromLTRB(10.0, 50.0, 10.0, 0.0),
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/nointernet.jpg',
-                    fit: BoxFit.fitWidth,
-                  ),
-                  Text(
-                    controller.isLoading.isFalse
-                        ? 'Pastikan anda terkoneksi dengan internet'
-                        : 'Menghubungkan Kembali',
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  if (controller.isLoading.isFalse)
-                    OutlinedButton.icon(
-                      style: OutlinedButton.styleFrom(
-                        shape: const StadiumBorder(),
-                        side: const BorderSide(
-                          width: 1,
-                          color: Colors.blue,
-                        ),
-                      ),
-                      onPressed: () {
-                        controller.isLoading(true);
-                        controller
-                            .getUsers()
-                            .whenComplete(() => controller.isLoading(false));
-                      },
-                      label: const Text('Coba Lagi'),
-                      icon: const Icon(Icons.wifi_protected_setup_sharp),
-                    ),
-                  if (controller.isLoading.isTrue)
-                    const CircularProgressIndicator()
-                ],
+    );
+  }
+
+  Widget buildDataObx(context) {
+    return controller.obx(
+      (data) => SingleChildScrollView(
+        controller: controller.scrollController,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            widgetHeader(),
+            widgetStories(context, data!),
+            widgetPosting(data),
+          ],
+        ),
+      ),
+      onError: (error) => Obx(
+        () => Padding(
+          padding: const EdgeInsets.fromLTRB(10.0, 50.0, 10.0, 0.0),
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/nointernet.jpg',
+                fit: BoxFit.fitWidth,
               ),
-            ),
+              Text(
+                controller.isLoading.isFalse
+                    ? 'Pastikan anda terkoneksi dengan internet'
+                    : 'Menghubungkan Kembali',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(height: 20),
+              if (controller.isLoading.isFalse)
+                OutlinedButton.icon(
+                  style: OutlinedButton.styleFrom(
+                    shape: const StadiumBorder(),
+                    side: const BorderSide(
+                      width: 1,
+                      color: Colors.blue,
+                    ),
+                  ),
+                  onPressed: () {
+                    controller.isLoading(true);
+                    controller
+                        .getUsers()
+                        .whenComplete(() => controller.isLoading(false));
+                  },
+                  label: const Text('Coba Lagi'),
+                  icon: const Icon(Icons.wifi_protected_setup_sharp),
+                ),
+              if (controller.isLoading.isTrue) const CircularProgressIndicator()
+            ],
           ),
         ),
       ),
@@ -152,7 +169,7 @@ class Home extends GetView<HomeController> {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * .115,
+            height: 80,
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: data.length,
@@ -180,7 +197,7 @@ class Home extends GetView<HomeController> {
             icon: const Icon(Icons.camera_alt),
           ),
           Text(
-            'Isee',
+            'Iclone',
             style: GoogleFonts.pacifico(
               fontSize: 20,
             ),
@@ -273,7 +290,7 @@ class Home extends GetView<HomeController> {
                 },
                 child: CarouselSlider(
                   options: CarouselOptions(
-                    height: MediaQuery.of(context).size.height * .5,
+                    height: MediaQuery.of(context).size.height * .4,
                     viewportFraction: 1,
                   ),
                   items: [
@@ -321,16 +338,12 @@ class Home extends GetView<HomeController> {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if (data.isFavorite == false)
-                    IconButton(
-                      icon: const Icon(Icons.favorite_border),
-                      onPressed: () {},
-                    ),
-                  if (data.isFavorite == true)
-                    IconButton(
-                      icon: const Icon(Icons.favorite, color: Colors.red),
-                      onPressed: () {},
-                    ),
+                  IconButton(
+                    icon: data.isFavorite
+                        ? const Icon(Icons.favorite, color: Colors.red)
+                        : const Icon(Icons.favorite_border),
+                    onPressed: () {},
+                  ),
                   IconButton(
                     icon: const Icon(Icons.comment_outlined),
                     onPressed: () {},
@@ -467,7 +480,7 @@ class Home extends GetView<HomeController> {
 
   Widget listStatus(BuildContext context, Users data) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: Column(
         children: [
           Container(
@@ -475,19 +488,19 @@ class Home extends GetView<HomeController> {
               shape: BoxShape.circle,
               gradient: LinearGradient(
                 colors: [
-                  Colors.blue,
-                  Colors.red,
+                  Color.fromARGB(255, 220, 124, 233),
+                  Color.fromARGB(255, 216, 231, 56),
                 ],
                 tileMode: TileMode.repeated,
-                // stops: [0.5, 0.3],
                 begin: Alignment.bottomRight,
                 end: Alignment.topLeft,
               ),
             ),
-            padding: const EdgeInsets.all(2.5),
+            padding: const EdgeInsets.all(2.75),
             child: Center(
               child: ClipOval(
                 child: CachedNetworkImage(
+                  width: 50,
                   imageUrl: data.picture.thumbnail,
                   fit: BoxFit.cover,
                 ),

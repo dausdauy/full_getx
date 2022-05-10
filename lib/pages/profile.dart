@@ -16,35 +16,42 @@ class Profile extends GetView {
           () => Stack(
             children: [
               Container(
-                margin: const EdgeInsets.symmetric(vertical: 20),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
+                    Row(
                       children: [
-                        Center(
-                          child: SizedBox(
-                            height: 120,
-                            width: 120,
-                            child: ClipOval(
-                              child: CachedNetworkImage(
-                                imageUrl: c.auth.currentUser!.photoURL ?? '',
-                                fit: BoxFit.cover,
-                                errorWidget: (b, s, d) =>
-                                    const Icon(Icons.person_rounded, size: 50),
-                              ),
+                        SizedBox(
+                          height: 40,
+                          width: 40,
+                          child: ClipOval(
+                            child: CachedNetworkImage(
+                              imageUrl: c.auth.currentUser!.photoURL ?? '',
+                              fit: BoxFit.cover,
+                              errorWidget: (b, s, d) =>
+                                  const Icon(Icons.person_rounded, size: 50),
                             ),
                           ),
                         ),
-                        Text(c.auth.currentUser!.displayName ?? 'No Name'),
-                        Text(c.auth.currentUser!.email ?? ''),
+                        const SizedBox(width: 10),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(c.auth.currentUser!.displayName ?? 'No Name',
+                                style: Theme.of(context).textTheme.titleLarge),
+                            Text(c.auth.currentUser!.email ?? '',
+                                style: Theme.of(context).textTheme.caption),
+                          ],
+                        ),
                       ],
                     ),
                     Column(
                       children: [
                         Text(
-                          'Last active :' +
+                          'Last login :' +
                               DateFormat('EEE, d/M/y')
                                   .add_jms()
                                   .format(c.auth.currentUser!.metadata

@@ -61,7 +61,7 @@ class SignUp extends GetView {
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
                                 textInputAction: TextInputAction.done,
-                                onEditingComplete: () => onLogin(context),
+                                onEditingComplete: () => onSignUp(context),
                                 validator: MyFunc.validatorPassword,
                                 obscureText: c.showPassword.value,
                                 keyboardType: TextInputType.emailAddress,
@@ -102,7 +102,7 @@ class SignUp extends GetView {
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
                                 textInputAction: TextInputAction.done,
-                                onEditingComplete: () => onLogin(context),
+                                onEditingComplete: () => onSignUp(context),
                                 validator: MyFunc.validatorPassword,
                                 obscureText: c.showPassword.value,
                                 keyboardType: TextInputType.emailAddress,
@@ -140,13 +140,33 @@ class SignUp extends GetView {
                               ElevatedButton(
                                 onPressed: () => c.isLoading.isTrue
                                     ? null
-                                    : onLogin(context),
+                                    : onSignUp(context),
                                 style: ElevatedButton.styleFrom(
                                   primary: c.isLoading.isTrue
                                       ? Colors.grey
                                       : Colors.black,
                                 ),
                                 child: const Text('SUBMIT'),
+                              ),
+
+                              const SizedBox(height: 20),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('Already have an account? ',
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
+                                      textScaleFactor: 1.25),
+                                  InkWell(
+                                    onTap: () => Get.back(),
+                                    child: Text(
+                                      'Sign In',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -164,7 +184,7 @@ class SignUp extends GetView {
     );
   }
 
-  Future<void> onLogin(context) async {
+  Future<void> onSignUp(context) async {
     if (_keyForm.currentState!.validate()) {
       FocusScope.of(context).unfocus();
       c.isLoading(true);
