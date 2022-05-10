@@ -14,13 +14,7 @@
 
 ## API Reference.
 
-<<<<<<< HEAD
-
 - disini gw make [randomuser.me](https://randomuser.me).
-
-=======
-
-> > > > > > > 9f84c4b88926a8a8e92176ae9bf71d71001d4847
 
 <h2 align="center">
   Screenshoot
