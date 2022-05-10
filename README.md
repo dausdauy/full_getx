@@ -14,8 +14,6 @@
 ## API Reference.
 - disini gw make [randomuser.me](https://randomuser.me).
 
-###### # Note : yang mau kontribute silahkan dengan senang hati, bisa di improvisasi sekalian belajar2.
-
 <h2 align="center">
   Screenshoot
 </h2>
