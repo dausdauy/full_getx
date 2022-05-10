@@ -1,6 +1,7 @@
-<h1 align="center"> Isee. </h1>
+<h1 align="center"> Belajar Design. </h1>
 
 ## Dependencies.
+
 - [getX](https://pub.dev/packages/get) untuk state managementnya (lazyload, Bindings, GetConnect & StateMixin).
 - [cached_network_image](https://pub.dev/packages/cached_network_image) untuk cache imagenya.
 - [fluttertoast](https://pub.dev/packages/fluttertoast) untuk informasi.
@@ -12,9 +13,8 @@
 - [google_sign_in](https://pub.dev/packages/google_sign_in) untuk login dengan Google.
 
 ## API Reference.
-- disini gw make [randomuser.me](https://randomuser.me).
 
-###### # Note : yang mau kontribute silahkan dengan senang hati, bisa di improvisasi sekalian belajar2.
+- disini gw make [randomuser.me](https://randomuser.me).
 
 <h2 align="center">
   Screenshoot
